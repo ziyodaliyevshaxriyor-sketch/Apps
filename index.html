@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EagleWay Trucking Application</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="container">
+
+<img src="logo.png" class="logo" alt="EagleWay Logo">
+<h2>EagleWay Trucking Application</h2>
+
+<form action="https://formsubmit.co/shaxriyor.z@icloud.com" method="POST" enctype="multipart/form-data">
+<input type="hidden" name="_captcha" value="false">
+
+<label>Full Name</label>
+<input type="text" name="Full Name" required>
+
+<label>Phone Number</label>
+<input type="tel" name="Phone Number" pattern="[0-9]{10,15}" required placeholder="Only numbers">
+
+<label>Email</label>
+<input type="email" name="Email" required>
+
+<label>Nationality</label>
+<input type="text" name="Nationality">
+
+<label>OTR Experience (years)</label>
+<input type="number" id="otr" name="OTR Experience" min="1" max="50" oninput="updatePayment()" required>
+
+<label>Weekly Miles</label>
+<select name="Weekly Miles">
+<option>4000</option>
+<option>4500</option>
+<option>5000</option>
+</select>
+
+<label>ELD Option</label>
+<select name="ELD">
+<option>4 weeks on | 4 days off</option>
+<option>3 weeks on | 3 days off</option>
+<option>5-6 weeks on | 5-6 days off</option>
+</select>
+
+<div class="payment-box">
+<h3>Payment</h3>
+<label>CPM</label>
+<input type="text" id="cpm" name="CPM" readonly placeholder="Auto-fill">
+<label>Percent (%)</label>
+<input type="text" id="percent" name="Percent" readonly placeholder="Auto-fill">
+</div>
+
+<label>Endorsements</label>
+<input type="checkbox" id="twic" name="Endorsement"> TWIC<br>
+<input type="checkbox" id="hazmat" name="Endorsement" onclick="updatePayment()"> Hazmat<br>
+<input type="checkbox" id="tanker" name="Endorsement" onclick="updatePayment()"> Tanker (for Hazmat only)<br>
+
+<div class="escrow-box">
+<h3>Escrow</h3>
+<p>$2,500 ($250/week) fully refundable</p>
+</div>
+
+<label>Trailer Type</label>
+<select name="Trailer Type">
+<option>Dry Van</option>
+<option>Reefer</option>
+<option>Both</option>
+</select>
+
+<button type="submit">Submit Application</button>
+</form>
+
+<div class="contact">
+<p>Contact Us</p>
+<p>515-635-1204</p>
+<p>Telegram: <a href="https://t.me/Shane_Taylor7">@Shane_Taylor7</a></p>
+<p>Email: <a href="mailto:ziyodaliyevshaxriyor@gmail.com">ziyodaliyevshaxriyor@gmail.com</a></p>
+<p>Based out: GA | IL | OH</p>
+</div>
+
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
