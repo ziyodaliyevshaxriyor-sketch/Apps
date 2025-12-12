@@ -4,7 +4,50 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EagleWay Trucking Application</title>
-<link rel="stylesheet" href="./style.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#0A2A57,#1E3A8A);
+    margin:0; padding:20px;
+    display:flex; justify-content:center;
+    color:white; min-height:100vh;
+}
+.container {
+    width:100%; max-width:650px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(6px);
+    border-radius:15px;
+    padding:30px 25px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.5);
+    text-align:center;
+}
+.logo {
+    display:block; margin:0 auto 20px;
+    width:120px; max-width:50%; height:auto;
+}
+h2 { margin-bottom:25px; font-weight:700; }
+label { display:block; margin-top:15px; margin-bottom:5px; font-weight:bold; text-align:left; }
+input, select { width:100%; padding:12px; border-radius:8px; border:none; margin-bottom:10px; font-size:16px; }
+.payment-box, .escrow-box { background:white; color:black; padding:15px 20px; border-radius:10px; margin-top:15px; text-align:left; }
+button { width:100%; padding:15px; background:#000; color:#fff; border:none; border-radius:10px; font-size:18px; margin-top:20px; cursor:pointer; transition: all 0.3s ease; }
+button:hover { background:#1E3A8A; }
+.contact { margin-top:25px; padding:15px; background:rgba(0,0,0,0.8); border-radius:10px; text-align:center; }
+.contact p { margin:5px 0; }
+a { color:white; text-decoration:none; }
+@media(max-width:700px){ .container{ padding:20px 15px; } }
+</style>
+<script>
+function updatePayment() {
+    let exp=parseFloat(document.getElementById("otr").value);
+    let cpm=document.getElementById("cpm");
+    let percent=document.getElementById("percent");
+    let hazmat=document.getElementById("hazmat").checked;
+    let tanker=document.getElementById("tanker").checked;
+    if(hazmat && tanker){ cpm.value="70 CPM"; percent.value="30%"; }
+    else{ if(exp>=1 && exp<2){ cpm.value="60 CPM"; percent.value="25%"; } 
+    else if(exp>=2){ cpm.value="65 CPM"; percent.value="27%"; } else{ cpm.value=""; percent.value=""; } }
+}
+</script>
 </head>
 <body>
 
@@ -51,12 +94,13 @@
 <input type="text" id="cpm" name="CPM" readonly placeholder="Auto-fill">
 <label>Percent (%)</label>
 <input type="text" id="percent" name="Percent" readonly placeholder="Auto-fill">
+<p>From 1-2 yrs: 25% / 60 CPM<br>From 2+ yrs: 27% / 65 CPM<br>Mileage Daily: 800+<br>Mileage Weekly: 4000 (Mon-Fri)<br>Working weeks: Min 3<br>Home Days: 1 Week = 1 Day</p>
 </div>
 
 <label>Endorsements</label>
 <input type="checkbox" id="twic" name="Endorsement"> TWIC<br>
 <input type="checkbox" id="hazmat" name="Endorsement" onclick="updatePayment()"> Hazmat<br>
-<input type="checkbox" id="tanker" name="Endorsement" onclick="updatePayment()"> Tanker (for Hazmat only)<br>
+<input type="checkbox" id="tanker" name="Endorsement" onclick="updatePayment()"> Tanker (Hazmat only)<br>
 
 <div class="escrow-box">
 <h3>Escrow</h3>
@@ -82,7 +126,5 @@
 </div>
 
 </div>
-
-<script src="./script.js"></script>
 </body>
 </html>
